@@ -28,10 +28,7 @@ class QuizApiService {
 
       return mapdatalist;
     } else {
-      throw {
-        "code": response.statusCode,
-        "body": response.body,
-      };
+      throw response.body;
     }
   }
 }
