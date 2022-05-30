@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:quiz/views/variables/color_variables.dart';
 
 import 'views/splash/splash_screen.dart';
 
@@ -30,7 +31,8 @@ class MyApp extends StatelessWidget {
         // or simply save your changes to "hot reload" in a Flutter IDE).
         // Notice that the counter didn't reset back to zero; the application
         // is not restarted.
-        primarySwatch: Colors.blue,
+        primarySwatch: CustomColors.primaryCustomColor,
+        scaffoldBackgroundColor: CustomColors.primaryCustomColor,
       ),
       home: const SplashScreen(),
     );

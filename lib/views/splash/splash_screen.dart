@@ -15,19 +15,16 @@ class SplashScreen extends StatelessWidget {
     final ScreenController screenCtrl = Get.put(ScreenController());
     screenCtrl.splasDelay();
     return Scaffold(
-      body: Container(
-        color: CustomColors.black,
-        child: Center(
-          child: ListView(
-            padding: const EdgeInsets.all(15.0),
-            shrinkWrap: true,
-            physics: const ScrollPhysics(),
-            children: [
-              Image.asset(
-                CustomIcons.logo!,
-              ),
-            ],
-          ),
+      body: Center(
+        child: ListView(
+          padding: const EdgeInsets.all(15.0),
+          shrinkWrap: true,
+          physics: const ScrollPhysics(),
+          children: [
+            Image.asset(
+              CustomIcons.logo!,
+            ),
+          ],
         ),
       ),
     );
