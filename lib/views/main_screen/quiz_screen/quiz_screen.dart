@@ -29,9 +29,11 @@ class QuizScreen extends StatelessWidget {
                     style: CustomTextStyles.normalWhiteBoldStyle,
                   ),
                 ),
-                Text(
-                  "Score : 300",
-                  style: CustomTextStyles.normalWhiteBoldStyle,
+                Obx(
+                  () => Text(
+                    "Score : ${quizCtrl.currentScore}",
+                    style: CustomTextStyles.normalWhiteBoldStyle,
+                  ),
                 ),
               ],
             ),
@@ -73,7 +75,16 @@ class QuizScreen extends StatelessWidget {
                                 option: entry.key, value: entry.value))
                             .toList()[index];
                         return AnswerCard(
-                          answer: answer.value,
+                          onTap: () {
+                            if (!quizCtrl.isAnswerSelect.value) {
+                              quizCtrl.selectAnswer(answer);
+                            }
+                          },
+                          answer: answer,
+                          correctAnswer: quizCtrl
+                              .allQuestionList[
+                                  quizCtrl.currentQuestionIndex.value]!
+                              .correctAnswer,
                         );
                       })
                   : Container();
