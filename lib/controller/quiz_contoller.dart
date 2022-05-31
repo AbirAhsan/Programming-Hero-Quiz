@@ -3,6 +3,8 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:quiz/services/custom_eassy_loading.dart';
+import 'package:quiz/services/page_navigation_service.dart';
+import 'package:quiz/views/main_screen/home_screen.dart';
 
 import '../model/answer_model.dart';
 import '../model/question_model.dart';
@@ -62,8 +64,25 @@ class QuizController extends GetxController {
     isAnswerSelect.value = true;
     if (selectedAnswer!.option ==
         allQuestionList[currentQuestionIndex.value]!.correctAnswer) {
-      currentScore.value = allQuestionList[currentQuestionIndex.value]!.score!;
+      currentScore.value += allQuestionList[currentQuestionIndex.value]!.score!;
     }
+
+    update();
+    gotoNextQuestion();
+  }
+
+  //
+  //<<================================ Next Question Functionality
+  Future<void> gotoNextQuestion() async {
+    Future.delayed(const Duration(seconds: 2)).then((value) {
+      if (currentQuestionIndex.value + 1 == allQuestionList.length) {
+        PageNavigationService.removeAllAndNavigate(const HomeScreen());
+      } else {
+        isAnswerSelect.value = false;
+        selectedAnswerList.clear();
+        currentQuestionIndex.value++;
+      }
+    });
     update();
   }
 }

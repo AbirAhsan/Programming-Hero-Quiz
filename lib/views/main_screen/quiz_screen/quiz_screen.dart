@@ -55,25 +55,18 @@ class QuizScreen extends StatelessWidget {
                   ? ListView.builder(
                       physics: const NeverScrollableScrollPhysics(),
                       shrinkWrap: true,
-                      itemCount: quizCtrl
-                          .allQuestionList[quizCtrl.currentQuestionIndex.value]!
-                          .answers!
-                          .toJson()
-                          .entries
-                          .map((entry) => AnswerModel(
-                              option: entry.key, value: entry.value))
-                          .toList()
+                      itemCount: convertMapToList(quizCtrl
+                              .allQuestionList[
+                                  quizCtrl.currentQuestionIndex.value]!
+                              .answers!)
                           .length,
                       itemBuilder: (buildContext, index) {
-                        AnswerModel answer = quizCtrl
+                        AnswerModel answer = convertMapToList(quizCtrl
                             .allQuestionList[
                                 quizCtrl.currentQuestionIndex.value]!
-                            .answers!
-                            .toJson()
-                            .entries
-                            .map((entry) => AnswerModel(
-                                option: entry.key, value: entry.value))
-                            .toList()[index];
+                            .answers!)[index];
+                        print(
+                            "Length is ${quizCtrl.allQuestionList[2]!.answers!.entries.map((entry) => AnswerModel(option: entry.key, value: entry.value)).toList().length}");
                         return AnswerCard(
                           onTap: () {
                             if (!quizCtrl.isAnswerSelect.value) {
@@ -94,4 +87,14 @@ class QuizScreen extends StatelessWidget {
       ),
     );
   }
+}
+
+List<AnswerModel> convertMapToList(Map answers) {
+  print(answers);
+  List<AnswerModel> list = answers.entries
+      .map((entry) => AnswerModel(option: entry.key, value: entry.value))
+      .toList();
+  print(list.length);
+
+  return list;
 }
