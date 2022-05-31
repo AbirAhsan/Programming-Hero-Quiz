@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:quiz/model/answer_model.dart';
+import 'package:quiz/model/question_model.dart';
 import 'package:quiz/views/variables/teststyle_variable.dart';
 
 import '../../../controller/quiz_contoller.dart';
 
 class AnswerCard extends StatelessWidget {
   final void Function()? onTap;
-  final AnswerModel? answer;
+  final Answers? answer;
   final String? correctAnswer;
 
   const AnswerCard({

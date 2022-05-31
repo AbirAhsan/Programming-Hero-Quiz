@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:quiz/model/answer_model.dart';
 import 'package:quiz/model/question_model.dart';
 import 'package:quiz/views/main_screen/quiz_screen/answer_card.dart';
 import 'package:quiz/views/variables/teststyle_variable.dart';
@@ -55,18 +54,16 @@ class QuizScreen extends StatelessWidget {
                   ? ListView.builder(
                       physics: const NeverScrollableScrollPhysics(),
                       shrinkWrap: true,
-                      itemCount: convertMapToList(quizCtrl
-                              .allQuestionList[
-                                  quizCtrl.currentQuestionIndex.value]!
-                              .answers!)
+                      itemCount: quizCtrl
+                          .allQuestionList[quizCtrl.currentQuestionIndex.value]!
+                          .answers!
                           .length,
                       itemBuilder: (buildContext, index) {
-                        AnswerModel answer = convertMapToList(quizCtrl
+                        Answers answer = quizCtrl
                             .allQuestionList[
                                 quizCtrl.currentQuestionIndex.value]!
-                            .answers!)[index];
-                        print(
-                            "Length is ${quizCtrl.allQuestionList[2]!.answers!.entries.map((entry) => AnswerModel(option: entry.key, value: entry.value)).toList().length}");
+                            .answers![index];
+
                         return AnswerCard(
                           onTap: () {
                             if (!quizCtrl.isAnswerSelect.value) {
@@ -87,14 +84,4 @@ class QuizScreen extends StatelessWidget {
       ),
     );
   }
-}
-
-List<AnswerModel> convertMapToList(Map answers) {
-  print(answers);
-  List<AnswerModel> list = answers.entries
-      .map((entry) => AnswerModel(option: entry.key, value: entry.value))
-      .toList();
-  print(list.length);
-
-  return list;
 }

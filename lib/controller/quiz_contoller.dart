@@ -6,7 +6,6 @@ import 'package:quiz/services/custom_eassy_loading.dart';
 import 'package:quiz/services/page_navigation_service.dart';
 import 'package:quiz/views/main_screen/home_screen.dart';
 
-import '../model/answer_model.dart';
 import '../model/question_model.dart';
 import '../services/api_error_handle_service.dart';
 import '../services/api_service/quiz_api_service.dart';
@@ -30,8 +29,8 @@ class QuizController extends GetxController {
   }
 
 //<====================================== Selected Answer
-  RxList<AnswerModel?> selectedAnswerList =
-      List<AnswerModel?>.empty(growable: true).obs;
+  RxList<Answers?> selectedAnswerList =
+      List<Answers?>.empty(growable: true).obs;
 
 //
 //<<======================================== Fetch All Question And Assign To List
@@ -57,7 +56,7 @@ class QuizController extends GetxController {
   }
 
   //<============================== Select Answer Function
-  selectAnswer(AnswerModel? selectedAnswer) {
+  selectAnswer(Answers? selectedAnswer) {
     isAnswerSelect.value = false;
     selectedAnswerList.clear();
     selectedAnswerList.add(selectedAnswer);
