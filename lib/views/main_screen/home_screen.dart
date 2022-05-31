@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:quiz/services/page_navigation_service.dart';
+import 'package:quiz/views/main_screen/quiz_screen/quiz_screen.dart';
 import 'package:quiz/views/variables/color_variables.dart';
 import 'package:quiz/views/variables/teststyle_variable.dart';
 import 'package:quiz/views/widgets/custom_elevated_button.dart';
@@ -45,7 +47,10 @@ class HomeScreen extends StatelessWidget {
                 height: 40,
               ),
               //<<===================== New Quiz Game will be start When tap here
-              CustomElevatedButton(buttonName: "Start", onPressed: () {})
+              CustomElevatedButton(
+                  buttonName: "Start",
+                  onPressed: () => PageNavigationService.removeAndNavigate(
+                      const QuizScreen()))
             ],
           ),
         ),

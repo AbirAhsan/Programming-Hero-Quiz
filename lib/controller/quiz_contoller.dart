@@ -9,6 +9,7 @@ import '../services/api_error_handle_service.dart';
 import '../services/api_service/quiz_api_service.dart';
 
 class QuizController extends GetxController {
+  RxInt currentQuestionIndex = 0.obs;
   //<=================================== Quiz All Question List
   RxList<QuestionModel?> allQuestionList =
       List<QuestionModel?>.empty(growable: true).obs;
@@ -16,6 +17,7 @@ class QuizController extends GetxController {
   @override
   void onInit() {
     fetchAllQuestionList();
+
     super.onInit();
   }
 
