@@ -9,9 +9,12 @@ import 'package:quiz/views/main_screen/home_screen.dart';
 import '../model/question_model.dart';
 import '../services/api_error_handle_service.dart';
 import '../services/api_service/quiz_api_service.dart';
+import '../services/shared_data.dart';
 
 class QuizController extends GetxController {
   RxInt currentQuestionIndex = 0.obs;
+  //<============================== Highest Score
+  RxInt highestScore = 0.obs;
   //<============================== Current Score
   RxInt currentScore = 0.obs;
 
@@ -23,8 +26,8 @@ class QuizController extends GetxController {
 
   @override
   void onInit() {
+    getHighestScore();
     fetchAllQuestionList();
-
     super.onInit();
   }
 
@@ -64,6 +67,9 @@ class QuizController extends GetxController {
     if (selectedAnswer!.option ==
         allQuestionList[currentQuestionIndex.value]!.correctAnswer) {
       currentScore.value += allQuestionList[currentQuestionIndex.value]!.score!;
+      if (currentScore.value > highestScore.value) {
+        setHighestScore(currentScore.value);
+      }
     }
 
     update();
@@ -83,5 +89,13 @@ class QuizController extends GetxController {
       }
     });
     update();
+  }
+
+  getHighestScore() async {
+    highestScore.value = await SharedDataManageService.getHighestScore();
+  }
+
+  setHighestScore(int value) {
+    SharedDataManageService.setHighestScore(value);
   }
 }
