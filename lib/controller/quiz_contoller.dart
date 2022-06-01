@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:io';
 
 import 'package:flutter/material.dart';
@@ -47,6 +48,7 @@ class QuizController extends GetxController {
       QuizApiService().getQuestionList().then((resp) {
         allQuestionList.value = resp.toList();
         CustomEassyLoading.stopLoading();
+        currentQuestionIndex.value = 0;
         countDownTimer();
       }, onError: (err) {
         ApiErrorHandleService.handleStatusCodeError(err);
@@ -113,6 +115,7 @@ class QuizController extends GetxController {
       await Future.delayed(const Duration(seconds: 1)).then((_) {
         time.value -= 1;
       });
+
       if (isAnswerSelect.value) {
         break;
       }
