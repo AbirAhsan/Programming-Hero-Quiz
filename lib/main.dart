@@ -27,7 +27,7 @@ void configLoading() {
     ..progressColor = CustomColors.white
     ..textColor = CustomColors.white
     ..maskColor = Colors.blue.withOpacity(0.5)
-    ..userInteractions = true
+    ..userInteractions = false
     ..dismissOnTap = false;
 }
 
