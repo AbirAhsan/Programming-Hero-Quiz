@@ -17,7 +17,8 @@ class QuizController extends GetxController {
   RxInt highestScore = 0.obs;
   //<============================== Current Score
   RxInt currentScore = 0.obs;
-
+//<<============================== Question Progress ANimation Value
+  RxDouble progress = 0.0.obs;
   //<<============================= Is Answer Select
   RxBool isAnswerSelect = false.obs;
   //<=================================== Quiz All Question List
@@ -64,6 +65,7 @@ class QuizController extends GetxController {
     selectedAnswerList.clear();
     selectedAnswerList.add(selectedAnswer);
     isAnswerSelect.value = true;
+    progress.value += 1 / allQuestionList.length;
     if (selectedAnswer!.option ==
         allQuestionList[currentQuestionIndex.value]!.correctAnswer) {
       currentScore.value += allQuestionList[currentQuestionIndex.value]!.score!;

@@ -4,105 +4,158 @@ import 'package:quiz/views/variables/color_variables.dart';
 class CustomTextStyles {
   //
   //<<============================ Title Bold Style
-  static TextStyle titleBlackBoldStyle = TextStyle(
+  static const TextStyle titleBlackBoldStyle = TextStyle(
     fontSize: 22,
     fontWeight: FontWeight.bold,
     color: CustomColors.black,
   );
-  static TextStyle titleWhiteBoldStyle = TextStyle(
+  static const TextStyle titleWhiteBoldStyle = TextStyle(
     fontSize: 22,
     fontWeight: FontWeight.bold,
     color: CustomColors.white,
   );
 
-  static TextStyle titleGreyBoldStyle = TextStyle(
+  static const TextStyle titleGreyBoldStyle = TextStyle(
     fontSize: 22,
     fontWeight: FontWeight.bold,
     color: CustomColors.grey,
   );
-  static TextStyle titleRedBoldStyle = TextStyle(
+  static const TextStyle titleRedBoldStyle = TextStyle(
     fontSize: 22,
     fontWeight: FontWeight.bold,
     color: CustomColors.red,
   );
-  static TextStyle titleGreenBoldStyle = TextStyle(
+  static const TextStyle titleGreenBoldStyle = TextStyle(
     fontSize: 22,
     fontWeight: FontWeight.bold,
     color: CustomColors.green,
   );
 //
 //<<============================ Title Regular Style
-  static TextStyle titleBlackRegularStyle = TextStyle(
+  static const TextStyle titleBlackRegularStyle = TextStyle(
     fontSize: 22,
     color: CustomColors.black,
   );
-  static TextStyle titleWhiteRegularStyle = TextStyle(
+  static const TextStyle titleWhiteRegularStyle = TextStyle(
     fontSize: 22,
     color: CustomColors.white,
   );
 
-  static TextStyle titleGreyRegularStyle = TextStyle(
+  static const TextStyle titleGreyRegularStyle = TextStyle(
     fontSize: 22,
     color: CustomColors.grey,
   );
-  static TextStyle titleRedRegularStyle = TextStyle(
+  static const TextStyle titleRedRegularStyle = TextStyle(
     fontSize: 22,
     color: CustomColors.red,
   );
-  static TextStyle titleGreenRegularStyle = TextStyle(
+  static const TextStyle titleGreenRegularStyle = TextStyle(
     fontSize: 22,
     color: CustomColors.green,
   );
 
   //
   //<<============================ Normal Bold Style
-  static TextStyle normalBlackBoldStyle = TextStyle(
+  static const TextStyle normalBlackBoldStyle = TextStyle(
     fontSize: 16,
     fontWeight: FontWeight.bold,
     color: CustomColors.black,
   );
-  static TextStyle normalWhiteBoldStyle = TextStyle(
+  static const TextStyle normalWhiteBoldStyle = TextStyle(
     fontSize: 16,
     fontWeight: FontWeight.bold,
     color: CustomColors.white,
   );
 
-  static TextStyle normalGreyBoldStyle = TextStyle(
+  static const TextStyle normalGreyBoldStyle = TextStyle(
     fontSize: 16,
     fontWeight: FontWeight.bold,
     color: CustomColors.grey,
   );
-  static TextStyle normalRedBoldStyle = TextStyle(
+  static const TextStyle normalRedBoldStyle = TextStyle(
     fontSize: 16,
     fontWeight: FontWeight.bold,
     color: CustomColors.red,
   );
-  static TextStyle normalGreenBoldStyle = TextStyle(
+  static const TextStyle normalGreenBoldStyle = TextStyle(
     fontSize: 16,
     fontWeight: FontWeight.bold,
     color: CustomColors.green,
   );
   //
   //<<============================ Normal Regular Style
-  static TextStyle normalBlackRegularStyle = TextStyle(
+  static const TextStyle normalBlackRegularStyle = TextStyle(
     fontSize: 16,
     color: CustomColors.black,
   );
-  static TextStyle normalWhiteRegularStyle = TextStyle(
+  static const TextStyle normalWhiteRegularStyle = TextStyle(
     fontSize: 16,
     color: CustomColors.white,
   );
 
-  static TextStyle normalGreyRegularStyle = TextStyle(
+  static const TextStyle normalGreyRegularStyle = TextStyle(
     fontSize: 16,
     color: CustomColors.grey,
   );
-  static TextStyle normalRedRegularStyle = TextStyle(
+  static const TextStyle normalRedRegularStyle = TextStyle(
     fontSize: 16,
     color: CustomColors.red,
   );
-  static TextStyle normalGreenRegularStyle = TextStyle(
+  static const TextStyle normalGreenRegularStyle = TextStyle(
     fontSize: 16,
+    color: CustomColors.green,
+  );
+
+  //
+  //<<============================ Small Bold Style
+  static const TextStyle smallBlackBoldStyle = TextStyle(
+    fontSize: 12,
+    fontWeight: FontWeight.bold,
+    color: CustomColors.black,
+  );
+  static const TextStyle smallWhiteBoldStyle = TextStyle(
+    fontSize: 12,
+    fontWeight: FontWeight.bold,
+    color: CustomColors.white,
+  );
+
+  static const TextStyle smallGreyBoldStyle = TextStyle(
+    fontSize: 12,
+    fontWeight: FontWeight.bold,
+    color: CustomColors.grey,
+  );
+  static const TextStyle smallRedBoldStyle = TextStyle(
+    fontSize: 12,
+    fontWeight: FontWeight.bold,
+    color: CustomColors.red,
+  );
+  static const TextStyle smallGreenBoldStyle = TextStyle(
+    fontSize: 12,
+    fontWeight: FontWeight.bold,
+    color: CustomColors.green,
+  );
+
+  //
+  //<<============================ Small Regular Style
+  static const TextStyle smallBlackRegularStyle = TextStyle(
+    fontSize: 12,
+    color: CustomColors.black,
+  );
+  static const TextStyle smallWhiteRegularStyle = TextStyle(
+    fontSize: 12,
+    color: CustomColors.white,
+  );
+
+  static const TextStyle smallGreyRegularStyle = TextStyle(
+    fontSize: 12,
+    color: CustomColors.grey,
+  );
+  static const TextStyle smallRedRegularStyle = TextStyle(
+    fontSize: 12,
+    color: CustomColors.red,
+  );
+  static const TextStyle smallGreenRegularStyle = TextStyle(
+    fontSize: 12,
     color: CustomColors.green,
   );
 }

@@ -18,7 +18,7 @@ class QuestionModel {
       answers =
           json['answers'] != null ? convertMapToList(json['answers']) : [];
     }
-    questionImageUrl = json['questionImageUrl'];
+    questionImageUrl = json['questionImageUrl'].toString();
     correctAnswer = json['correctAnswer'];
     score = json['score'];
   }

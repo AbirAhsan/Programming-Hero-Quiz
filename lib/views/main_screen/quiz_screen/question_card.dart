@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:quiz/model/question_model.dart';
+import 'package:quiz/views/variables/color_variables.dart';
 import 'package:quiz/views/variables/icon_variables.dart';
 import 'package:quiz/views/variables/teststyle_variable.dart';
 
@@ -35,10 +36,37 @@ class QuestionCard extends StatelessWidget {
                         margin: const EdgeInsets.all(10.0),
                         height: 200,
                         width: 200,
-                        child: FadeInImage.assetNetwork(
-                          placeholder: CustomIcons.logo!,
-                          image:
-                              "${quizCtrl.allQuestionList[quizCtrl.currentQuestionIndex.value]?.questionImageUrl}",
+                        decoration: BoxDecoration(
+                            border: Border.all(color: CustomColors.grey)),
+                        child: Image.network(
+                          quizCtrl
+                                  .allQuestionList[
+                                      quizCtrl.currentQuestionIndex.value]
+                                  ?.questionImageUrl ??
+                              "",
+                          errorBuilder: (context, error, stackTrace) {
+                            //do something
+                            return const Center(
+                                child: Icon(
+                              Icons.error,
+                              size: 64,
+                              color: CustomColors.grey,
+                            ));
+                          },
+                          loadingBuilder: (BuildContext context, Widget child,
+                              ImageChunkEvent? loadingProgress) {
+                            if (loadingProgress == null) return child;
+                            return Center(
+                              child: CircularProgressIndicator(
+                                value: loadingProgress.expectedTotalBytes !=
+                                        null
+                                    ? loadingProgress.cumulativeBytesLoaded /
+                                        loadingProgress.expectedTotalBytes!
+                                            .toInt()
+                                    : null,
+                              ),
+                            );
+                          },
                           fit: BoxFit.contain,
                         ),
                       ),
