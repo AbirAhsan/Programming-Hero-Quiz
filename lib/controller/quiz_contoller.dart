@@ -3,6 +3,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:quiz/controller/screen_controller.dart';
 
 import '../model/question_model.dart';
 import '../services/api_error_handle_service.dart';
@@ -116,7 +117,8 @@ class QuizController extends GetxController {
         time.value -= 1;
       });
 
-      if (isAnswerSelect.value) {
+      if (isAnswerSelect.value ||
+          Get.put(ScreenController().isBackground.value)) {
         break;
       }
     }
