@@ -21,6 +21,9 @@ class QuizController extends GetxController {
   RxDouble progress = 0.0.obs;
   //<<============================= Is Answer Select
   RxBool isAnswerSelect = false.obs;
+
+  //<<================================== Timer Time
+  RxInt time = 10.obs;
   //<=================================== Quiz All Question List
   RxList<QuestionModel?> allQuestionList =
       List<QuestionModel?>.empty(growable: true).obs;
@@ -28,7 +31,7 @@ class QuizController extends GetxController {
   @override
   void onInit() {
     getHighestScore();
-    fetchAllQuestionList();
+
     super.onInit();
   }
 
@@ -44,6 +47,7 @@ class QuizController extends GetxController {
       QuizApiService().getQuestionList().then((resp) {
         allQuestionList.value = resp.toList();
         CustomEassyLoading.stopLoading();
+        countDownTimer();
       }, onError: (err) {
         print(err);
         ApiErrorHandleService.handleStatusCodeError(err);
@@ -99,5 +103,17 @@ class QuizController extends GetxController {
 
   setHighestScore(int value) {
     SharedDataManageService.setHighestScore(value);
+  }
+
+  //<================================ Question Timer
+  countDownTimer() async {
+    time.value = 10;
+    for (int x = time.value; x > 0; x--) {
+      await Future.delayed(const Duration(seconds: 1)).then((_) {
+        time.value -= 1;
+        print(time.value);
+      });
+    }
+    print("time.value");
   }
 }

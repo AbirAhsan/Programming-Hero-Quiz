@@ -17,6 +17,8 @@ class QuizScreen extends StatelessWidget {
     final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
     final QuizController quizCtrl = Get.put(QuizController());
     double width = MediaQuery.of(context).size.width;
+    quizCtrl.fetchAllQuestionList();
+
     return Scaffold(
       key: scaffoldKey,
       appBar: AppBar(
@@ -24,6 +26,27 @@ class QuizScreen extends StatelessWidget {
             "QUIZ",
             style: CustomTextStyles.titleWhiteBoldStyle,
           ),
+          actions: [
+            Obx(
+              () => CircularPercentIndicator(
+                radius: 20.0,
+                animation: true,
+                restartAnimation: false,
+                animateFromLastPercent: true,
+                percent: (quizCtrl.time.value / 10).toDouble(),
+                center: Text(
+                  "${quizCtrl.time}",
+                  style: CustomTextStyles.normalWhiteBoldStyle,
+                ),
+                backgroundColor: CustomColors.grey,
+                progressColor: quizCtrl.time > 6
+                    ? CustomColors.green
+                    : quizCtrl.time < 7 && quizCtrl.time > 3
+                        ? Colors.amber
+                        : CustomColors.red,
+              ),
+            ),
+          ],
           bottom: PreferredSize(
             preferredSize: Size(width, 20),
             child: Obx(
