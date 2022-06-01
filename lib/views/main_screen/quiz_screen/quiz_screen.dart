@@ -104,9 +104,10 @@ class QuizScreen extends StatelessWidget {
                 ? ListView.builder(
                     physics: const NeverScrollableScrollPhysics(),
                     shrinkWrap: true,
-                    itemCount: quizCtrl
-                        .allQuestionList[quizCtrl.currentQuestionIndex.value]!
-                        .answers!
+                    itemCount: suffuleList(quizCtrl
+                            .allQuestionList[
+                                quizCtrl.currentQuestionIndex.value]!
+                            .answers!)
                         .length,
                     itemBuilder: (buildContext, index) {
                       Answers answer = quizCtrl
@@ -132,4 +133,8 @@ class QuizScreen extends StatelessWidget {
       ),
     );
   }
+}
+
+List<Answers> suffuleList(List<Answers> answers) {
+  return answers..shuffle();
 }
