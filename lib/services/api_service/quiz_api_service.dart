@@ -1,9 +1,9 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'package:quiz/model/question_model.dart';
 
 import '../../app_config.dart';
+import '../../model/question_model.dart';
 
 class QuizApiService {
   //<======================================= Get DashBoard List Dynamicly
@@ -17,7 +17,7 @@ class QuizApiService {
         'Content-Type': 'application/json',
       },
     );
-    debugPrint("${response.statusCode} ${url}");
+    debugPrint("${response.statusCode} $url");
     if (response.statusCode == 200) {
       var jsonResponse = response.body;
       Map decoded = json.decode(jsonResponse);

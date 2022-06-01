@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:quiz/views/variables/color_variables.dart';
+
+import 'color_variables.dart';
 
 class CustomTextStyles {
   //

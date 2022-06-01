@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:quiz/services/page_navigation_service.dart';
-import 'package:quiz/views/main_screen/quiz_screen/quiz_screen.dart';
-import 'package:quiz/views/variables/color_variables.dart';
-import 'package:quiz/views/variables/teststyle_variable.dart';
-import 'package:quiz/views/widgets/custom_elevated_button.dart';
 
 import '../../controller/quiz_contoller.dart';
+import '../../services/page_navigation_service.dart';
+import '../variables/color_variables.dart';
 import '../variables/icon_variables.dart';
+import '../variables/teststyle_variable.dart';
+import '../widgets/custom_elevated_button.dart';
+import 'quiz_screen/quiz_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);

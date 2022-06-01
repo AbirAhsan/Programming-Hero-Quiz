@@ -1,6 +1,7 @@
 import 'package:get/get.dart';
-import 'package:quiz/services/page_navigation_service.dart';
-import 'package:quiz/views/main_screen/home_screen.dart';
+
+import '../services/page_navigation_service.dart';
+import '../views/main_screen/home_screen.dart';
 
 class ScreenController extends GetxController {
   //

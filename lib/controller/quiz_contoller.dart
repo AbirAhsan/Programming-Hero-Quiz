@@ -2,14 +2,14 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:quiz/services/custom_eassy_loading.dart';
-import 'package:quiz/services/page_navigation_service.dart';
-import 'package:quiz/views/main_screen/home_screen.dart';
 
 import '../model/question_model.dart';
 import '../services/api_error_handle_service.dart';
 import '../services/api_service/quiz_api_service.dart';
+import '../services/custom_eassy_loading.dart';
+import '../services/page_navigation_service.dart';
 import '../services/shared_data.dart';
+import '../views/main_screen/home_screen.dart';
 
 class QuizController extends GetxController {
   RxInt currentQuestionIndex = 0.obs;
@@ -49,16 +49,15 @@ class QuizController extends GetxController {
         CustomEassyLoading.stopLoading();
         countDownTimer();
       }, onError: (err) {
-        print(err);
         ApiErrorHandleService.handleStatusCodeError(err);
         CustomEassyLoading.stopLoading();
       });
     } on SocketException catch (e) {
+      CustomEassyLoading.stopLoading();
       debugPrint(e.toString());
-      CustomEassyLoading.stopLoading();
     } catch (e) {
-      print(e);
       CustomEassyLoading.stopLoading();
+      debugPrint(e.toString());
     }
     update();
   }
@@ -113,8 +112,6 @@ class QuizController extends GetxController {
     for (int x = time.value; x > 0; x--) {
       await Future.delayed(const Duration(seconds: 1)).then((_) {
         time.value -= 1;
-
-        print(time.value);
       });
       if (isAnswerSelect.value) {
         break;
@@ -134,7 +131,5 @@ class QuizController extends GetxController {
       // or Home screen as per condition
       gotoNextQuestion();
     }
-
-    print("time.value");
   }
 }

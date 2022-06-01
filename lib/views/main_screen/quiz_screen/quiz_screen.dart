@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:percent_indicator/percent_indicator.dart';
-import 'package:quiz/model/question_model.dart';
-import 'package:quiz/views/main_screen/quiz_screen/answer_card.dart';
-import 'package:quiz/views/variables/color_variables.dart';
-import 'package:quiz/views/variables/teststyle_variable.dart';
-
 import '../../../controller/quiz_contoller.dart';
+import '../../../model/question_model.dart';
+import '../../variables/color_variables.dart';
+import '../../variables/teststyle_variable.dart';
+import 'answer_card.dart';
 import 'question_card.dart';
 
 class QuizScreen extends StatelessWidget {

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:quiz/model/question_model.dart';
-import 'package:quiz/views/variables/teststyle_variable.dart';
 
 import '../../../controller/quiz_contoller.dart';
+import '../../../model/question_model.dart';
+import '../../variables/teststyle_variable.dart';
 
 class AnswerCard extends StatelessWidget {
   final void Function()? onTap;
