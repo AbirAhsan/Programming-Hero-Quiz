@@ -38,7 +38,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      title: 'Quiz App',
+      title: 'Programming Hero Quiz',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         // This is the theme of your application.
