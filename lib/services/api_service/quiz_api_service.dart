@@ -28,7 +28,9 @@ class QuizApiService {
 
       return mapdatalist;
     } else {
-      throw response.body;
+      var jsonResponse = response.body;
+      Map decoded = json.decode(jsonResponse);
+      throw decoded;
     }
   }
 }
