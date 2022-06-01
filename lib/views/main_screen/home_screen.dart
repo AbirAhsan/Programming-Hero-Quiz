@@ -56,7 +56,7 @@ class HomeScreen extends StatelessWidget {
                 buttonName: "Start",
                 onPressed: () => Get.defaultDialog(
                   title: "Attention",
-                  content: Text(
+                  content: const Text(
                     "During the Exam, do not try to exit/ change app. If you exit/change to another app then we will dissmiss you from this exam. Then you have to start anew",
                     style: CustomTextStyles.smallBlackRegularStyle,
                   ),
