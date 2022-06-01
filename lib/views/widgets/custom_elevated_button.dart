@@ -17,6 +17,7 @@ class CustomElevatedButton extends StatelessWidget {
   final double topPadding;
   final double bottomPadding;
   final Size? fizedSize;
+  final double? fontSize;
   const CustomElevatedButton({
     Key? key,
     required this.onPressed,
@@ -32,6 +33,7 @@ class CustomElevatedButton extends StatelessWidget {
     this.bottomMargin = 5.0,
     this.primaryColor = CustomColors.white,
     this.textColor = CustomColors.black,
+    this.fontSize = 26.0,
   }) : super(key: key);
 
   @override
@@ -62,9 +64,10 @@ class CustomElevatedButton extends StatelessWidget {
               child: Text(
                 "$buttonName",
                 style: TextStyle(
-                    fontSize: 26,
-                    fontWeight: FontWeight.w900,
-                    color: textColor),
+                  fontSize: fontSize,
+                  fontWeight: FontWeight.w900,
+                  color: textColor,
+                ),
               ),
             ),
           ),

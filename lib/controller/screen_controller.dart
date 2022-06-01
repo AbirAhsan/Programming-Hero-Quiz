@@ -28,7 +28,7 @@ class ScreenController extends GetxController with WidgetsBindingObserver {
   void didChangeAppLifecycleState(AppLifecycleState state) {
     isBackground.value = state == AppLifecycleState.paused;
     if (isBackground.value) {
-      print("App in Background");
+      debugPrint("App in Background");
       PageNavigationService.removeAllAndNavigate(const HomeScreen());
       isBackground.value = false;
     }

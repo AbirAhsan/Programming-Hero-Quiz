@@ -53,9 +53,21 @@ class HomeScreen extends StatelessWidget {
               ),
               //<<===================== New Quiz Game will be start When tap here
               CustomElevatedButton(
-                  buttonName: "Start",
-                  onPressed: () => PageNavigationService.removeAndNavigate(
-                      const QuizScreen()))
+                buttonName: "Start",
+                onPressed: () => Get.defaultDialog(
+                  title: "Attention",
+                  content: Text(
+                    "During the Exam, do not try to exit/ change app. If you exit/change to another app then we will dissmiss you from this exam. Then you have to start anew",
+                    style: CustomTextStyles.smallBlackRegularStyle,
+                  ),
+                  confirm: CustomElevatedButton(
+                      buttonName: "Continue",
+                      fontSize: 16,
+                      onPressed: () =>
+                          PageNavigationService.removeAllAndNavigate(
+                              const QuizScreen())),
+                ),
+              )
             ],
           ),
         ),
