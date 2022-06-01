@@ -92,6 +92,8 @@ class QuizController extends GetxController {
         isAnswerSelect.value = false;
         selectedAnswerList.clear();
         currentQuestionIndex.value++;
+        //<<============= And Timer Will Auto Start
+        countDownTimer();
       }
     });
     update();
@@ -111,9 +113,28 @@ class QuizController extends GetxController {
     for (int x = time.value; x > 0; x--) {
       await Future.delayed(const Duration(seconds: 1)).then((_) {
         time.value -= 1;
+
         print(time.value);
       });
+      if (isAnswerSelect.value) {
+        break;
+      }
     }
+
+    if (!isAnswerSelect.value) {
+      //<<<============= After 10 Seconds (If User isn't select Answer)
+      //Answer  Selection Automatically off
+      //and show the right answer
+      isAnswerSelect.value = true;
+
+      //<<========= Progress Bar Update
+      progress.value += 1 / allQuestionList.length;
+
+      //<============================= After That it's go to next question
+      // or Home screen as per condition
+      gotoNextQuestion();
+    }
+
     print("time.value");
   }
 }
