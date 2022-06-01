@@ -10,36 +10,15 @@ class CustomEassyLoading {
       dismissOnTap: false,
       status: "Please Wait",
       indicator: Image.asset(
-        CustomIcons.logo!,
+        CustomIcons.logo2!,
         width: 100,
         height: 130,
       ),
     );
   }
 
-  static startWithProgress(int value) async {
-    await EasyLoading.showProgress(
-      value / 100, maskType: EasyLoadingMaskType.none,
-      status: "$value%\nPlease Wait",
-      // indicator: Image.asset(
-      //   loader,
-      //   width: 100,
-      //   height: 130,
-      // ),
-    );
-  }
-
 //<<================ Stop Loading Function
   static stopLoading() async {
     await EasyLoading.dismiss();
-  }
-
-  //<===================== Show Success
-  static showSuccess(String? meessage) async {
-    await EasyLoading.showSuccess(
-      "$meessage",
-      duration: const Duration(seconds: 2),
-      dismissOnTap: true,
-    );
   }
 }
