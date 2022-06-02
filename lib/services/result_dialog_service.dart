@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:quiz/views/main_screen/home_screen.dart';
-import 'package:quiz/views/variables/color_variables.dart';
-import 'package:quiz/views/variables/custom_image_widget.dart';
-import 'package:quiz/views/variables/icon_variables.dart';
-import 'package:quiz/views/variables/teststyle_variable.dart';
 
 import '../controller/quiz_contoller.dart';
+import '../views/main_screen/home_screen.dart';
+import '../views/variables/icon_variables.dart';
+import '../views/variables/teststyle_variable.dart';
 import '../views/widgets/custom_elevated_button.dart';
+import '../views/widgets/custom_image_widget.dart';
 import 'page_navigation_service.dart';
 
 class ResultDialogService {

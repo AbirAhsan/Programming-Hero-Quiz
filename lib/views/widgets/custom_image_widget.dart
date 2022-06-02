@@ -17,7 +17,6 @@ class CustomImageWidget extends StatelessWidget {
       AssetImage(
         "$imagepath",
       ),
-      color: color,
       size: size,
     );
   }
