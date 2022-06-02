@@ -16,6 +16,7 @@ class ResultDialogService {
   static showResult() {
     quizCtrl.getHighestScore().then((_) {
       return Get.defaultDialog(
+          barrierDismissible: false,
           title: quizCtrl.highestScore.value > quizCtrl.currentScore.value ||
                   quizCtrl.currentScore.value == 0
               ? "Sorry"
@@ -43,7 +44,7 @@ class ResultDialogService {
                 style: CustomTextStyles.smallBlackRegularStyle,
               ),
               Text(
-                "Present Highest Score : ${quizCtrl.highestScore.value}",
+                "Previous Highest Score : ${quizCtrl.highestScore.value}",
                 style: CustomTextStyles.normalBlackBoldStyle,
               ),
             ],
