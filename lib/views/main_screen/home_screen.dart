@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 
 import '../../controller/quiz_contoller.dart';
 import '../../services/page_navigation_service.dart';
+import '../../services/result_dialog_service.dart';
 import '../variables/color_variables.dart';
 import '../variables/icon_variables.dart';
 import '../variables/teststyle_variable.dart';
@@ -67,7 +68,7 @@ class HomeScreen extends StatelessWidget {
                           PageNavigationService.removeAllAndNavigate(
                               const QuizScreen())),
                 ),
-              )
+              ),
             ],
           ),
         ),

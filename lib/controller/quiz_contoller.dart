@@ -4,6 +4,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:quiz/controller/screen_controller.dart';
+import 'package:quiz/services/result_dialog_service.dart';
 
 import '../model/question_model.dart';
 import '../services/api_error_handle_service.dart';
@@ -75,9 +76,6 @@ class QuizController extends GetxController {
     if (selectedAnswer!.option ==
         allQuestionList[currentQuestionIndex.value]!.correctAnswer) {
       currentScore.value += allQuestionList[currentQuestionIndex.value]!.score!;
-      if (currentScore.value > highestScore.value) {
-        setHighestScore(currentScore.value);
-      }
     }
 
     update();
@@ -89,7 +87,7 @@ class QuizController extends GetxController {
   Future<void> gotoNextQuestion() async {
     Future.delayed(const Duration(seconds: 2)).then((value) {
       if (currentQuestionIndex.value + 1 == allQuestionList.length) {
-        PageNavigationService.removeAllAndNavigate(const HomeScreen());
+        ResultDialogService.showResult();
       } else {
         isAnswerSelect.value = false;
         selectedAnswerList.clear();
@@ -101,7 +99,7 @@ class QuizController extends GetxController {
     update();
   }
 
-  getHighestScore() async {
+  Future getHighestScore() async {
     highestScore.value = await SharedDataManageService.getHighestScore();
   }
 
