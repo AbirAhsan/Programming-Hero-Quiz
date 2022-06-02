@@ -4,7 +4,6 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:quiz/controller/screen_controller.dart';
-import 'package:quiz/services/result_dialog_service.dart';
 
 import '../model/question_model.dart';
 import '../services/api_error_handle_service.dart';
@@ -13,6 +12,10 @@ import '../services/custom_eassy_loading.dart';
 import '../services/page_navigation_service.dart';
 import '../services/shared_data.dart';
 import '../views/main_screen/home_screen.dart';
+import '../views/variables/icon_variables.dart';
+import '../views/variables/teststyle_variable.dart';
+import '../views/widgets/custom_elevated_button.dart';
+import '../views/widgets/custom_image_widget.dart';
 
 class QuizController extends GetxController {
   RxInt currentQuestionIndex = 0.obs;
@@ -48,9 +51,13 @@ class QuizController extends GetxController {
     try {
       CustomEassyLoading.startLoading();
       QuizApiService().getQuestionList().then((resp) {
+        currentScore.value = 0;
+        progress.value = 0.0;
+        isAnswerSelect.value = false;
         allQuestionList.value = resp.toList();
         CustomEassyLoading.stopLoading();
         currentQuestionIndex.value = 0;
+
         countDownTimer();
       }, onError: (err) {
         ApiErrorHandleService.handleStatusCodeError(err);
@@ -87,7 +94,53 @@ class QuizController extends GetxController {
   Future<void> gotoNextQuestion() async {
     Future.delayed(const Duration(seconds: 2)).then((value) {
       if (currentQuestionIndex.value + 1 == allQuestionList.length) {
-        ResultDialogService.showResult();
+        Get.defaultDialog(
+            barrierDismissible: false,
+            title: highestScore.value > currentScore.value ||
+                    currentScore.value == 0
+                ? "Sorry"
+                : "Congrats",
+            titleStyle: CustomTextStyles.titleGreenBoldStyle,
+            content: Obx(
+              () => Column(
+                children: [
+                  CustomImageWidget(
+                    imagepath: highestScore.value > currentScore.value ||
+                            currentScore.value == 0
+                        ? CustomIcons.sad
+                        : CustomIcons.congrats,
+                    size: 80,
+                  ),
+                  Text(
+                    "You just scored ${currentScore.value}.",
+                    style: CustomTextStyles.smallBlackRegularStyle,
+                  ),
+                  Text(
+                    highestScore.value > currentScore.value ||
+                            currentScore.value == 0
+                        ? "But You can't reach to Highest Score"
+                        : "You set a new highest score",
+                    style: CustomTextStyles.smallBlackRegularStyle,
+                  ),
+                  Text(
+                    "Previous Highest Score : ${highestScore.value}",
+                    style: CustomTextStyles.normalBlackBoldStyle,
+                  ),
+                ],
+              ),
+            ),
+            confirm: CustomElevatedButton(
+                buttonName: "Back To Home",
+                fontSize: 16,
+                onPressed: () {
+                  if (!(highestScore.value > currentScore.value ||
+                      currentScore.value == 0)) {
+                    setHighestScore(currentScore.value);
+                  }
+
+                  PageNavigationService.removeAllAndNavigate(
+                      const HomeScreen());
+                }));
       } else {
         isAnswerSelect.value = false;
         selectedAnswerList.clear();
